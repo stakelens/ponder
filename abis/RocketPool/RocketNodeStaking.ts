@@ -1,3 +1,5 @@
+export const RocketNodeStakingAddress =
+  "0x3019227b2b8493e45bf5d25302139c9a2713bf15";
 export const RocketNodeStakingAbi = [
   {
     inputs: [

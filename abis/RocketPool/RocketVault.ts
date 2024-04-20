@@ -1,3 +1,4 @@
+export const RocketVaultAddress = "0x3bdc69c4e5e13e52a65f5583c23efb9636b469d6";
 export const RocketVaultAbi = [
   {
     inputs: [

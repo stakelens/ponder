@@ -1,8 +1,13 @@
 import { createConfig } from "@ponder/core";
 import { http } from "viem";
-
-import { RocketVaultAbi } from "./abis/RocketPool/RocketVault";
-import { RocketNodeStakingAbi } from "./abis/RocketPool/RocketNodeStaking";
+import {
+  RocketVaultAbi,
+  RocketVaultAddress,
+} from "./abis/RocketPool/RocketVault";
+import {
+  RocketNodeStakingAbi,
+  RocketNodeStakingAddress,
+} from "./abis/RocketPool/RocketNodeStaking";
 import {
   RocketMinipoolManagerAbi,
   RocketMinipoolManagerAddress,
@@ -24,13 +29,13 @@ export default createConfig({
     RocketVault: {
       network: "mainnet",
       abi: RocketVaultAbi,
-      address: "0x3bdc69c4e5e13e52a65f5583c23efb9636b469d6",
+      address: RocketVaultAddress,
       startBlock,
     },
     RocketNodeStaking: {
       network: "mainnet",
       abi: RocketNodeStakingAbi,
-      address: "0x3019227b2b8493e45bf5d25302139c9a2713bf15",
+      address: RocketNodeStakingAddress,
       startBlock,
     },
     RocketMinipoolManager: {
