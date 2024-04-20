@@ -4,7 +4,7 @@ import { ponder } from "@/generated";
 
 import { RocketVaultAbi } from "../abis/RocketPool/RocketVault";
 import { RocketNodeStakingAbi } from "../abis/RocketPool/RocketNodeStaking";
-import { RocketMinipoolManagerAbi } from "../abis/RocketPool/RocketMinipoolManager";
+import { RocketMinipoolManagerAbi, RocketMinipoolManagerAddress } from "../abis/RocketPool/RocketMinipoolManager";
 
 ponder.on(
   "RocketMinipoolManager:MinipoolCreated",
@@ -22,7 +22,7 @@ ponder.on(
 
     while (true) {
       const activeMinipools = await client.readContract({
-        address: "0x6293b8abc1f36afb22406be5f96d893072a8cf3a",
+        address: RocketMinipoolManagerAddress,
         abi: RocketMinipoolManagerAbi,
         functionName: "getMinipoolCountPerStatus",
         args: [BigInt(offset), BigInt(limit)],

@@ -3,7 +3,10 @@ import { http } from "viem";
 
 import { RocketVaultAbi } from "./abis/RocketPool/RocketVault";
 import { RocketNodeStakingAbi } from "./abis/RocketPool/RocketNodeStaking";
-import { RocketMinipoolManagerAbi } from "./abis/RocketPool/RocketMinipoolManager";
+import {
+  RocketMinipoolManagerAbi,
+  RocketMinipoolManagerAddress,
+} from "./abis/RocketPool/RocketMinipoolManager";
 
 const startBlock = 13535419;
 
@@ -12,7 +15,9 @@ export default createConfig({
     mainnet: {
       chainId: 1,
       maxRequestsPerSecond: 30,
-      transport: http("https://eth-mainnet.rpc.grove.city/v1/60ff569c7031010034074b21"),
+      transport: http(
+        "https://eth-mainnet.rpc.grove.city/v1/60ff569c7031010034074b21"
+      ),
     },
   },
   contracts: {
@@ -31,7 +36,7 @@ export default createConfig({
     RocketMinipoolManager: {
       network: "mainnet",
       abi: RocketMinipoolManagerAbi,
-      address: "0x6293b8abc1f36afb22406be5f96d893072a8cf3a",
+      address: RocketMinipoolManagerAddress,
       startBlock,
     },
   },

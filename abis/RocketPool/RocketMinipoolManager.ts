@@ -1,3 +1,5 @@
+export const RocketMinipoolManagerAddress =
+  "0x6293b8abc1f36afb22406be5f96d893072a8cf3a";
 export const RocketMinipoolManagerAbi = [
   {
     inputs: [
