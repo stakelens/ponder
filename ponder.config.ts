@@ -13,13 +13,13 @@ import {
   RocketMinipoolManagerAddress,
 } from "./abis/RocketPool/RocketMinipoolManager";
 
-const startBlock = 13535419;
+const startBlock = 14353601;
 
 export default createConfig({
   networks: {
     mainnet: {
       chainId: 1,
-      maxRequestsPerSecond: 30,
+      maxRequestsPerSecond: 25,
       transport: http(
         "https://eth-mainnet.rpc.grove.city/v1/60ff569c7031010034074b21"
       ),

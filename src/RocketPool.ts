@@ -2,8 +2,8 @@ import type { Hex } from "viem";
 import { fromHex } from "viem";
 import { ponder } from "@/generated";
 
-import { RocketVaultAbi } from "../abis/RocketPool/RocketVault";
-import { RocketNodeStakingAbi } from "../abis/RocketPool/RocketNodeStaking";
+import { RocketVaultAbi, RocketVaultAddress } from "../abis/RocketPool/RocketVault";
+import { RocketNodeStakingAbi, RocketNodeStakingAddress } from "../abis/RocketPool/RocketNodeStaking";
 import { RocketMinipoolManagerAbi, RocketMinipoolManagerAddress } from "../abis/RocketPool/RocketMinipoolManager";
 
 ponder.on(
@@ -11,8 +11,12 @@ ponder.on(
   async ({ event, context }) => {
     const { client } = context;
 
-    const limit = 1000;
+    let totalEthLocked = 0n;
+    let totalRPLLocked = 0n;
+    let totalRethLocked = 0n;
 
+    // Calculate total ETH locked
+    const limit = 1000;
     let offset = 0;
 
     let initialisedMinipools: bigint = 0n;
@@ -49,16 +53,73 @@ ponder.on(
       console.log("offset: ", offset);
     }
 
-    const value =
+    const ethLockedInMinipools =
       initialisedMinipools * 16n +
       prelaunchMinipools * 32n +
       stakingMinipools * 32n +
       (withdrawableMinipools * 32n) * BigInt(1e18);
 
-    await context.db.EthLockedInMinipools.create({
+    totalEthLocked += ethLockedInMinipools;
+
+    const rocketVaultContract = {
+      address: RocketVaultAddress,
+      abi: RocketVaultAbi,
+    } as const;
+
+    const rocketDepositPoolEth = await client.readContract({
+      address: rocketVaultContract.address,
+      abi: rocketVaultContract.abi,
+      functionName: "balanceOf",
+      args: ["rocketDepositPool"],
+      blockNumber: event.block.number,
+    });
+
+    totalEthLocked += rocketDepositPoolEth;
+
+    // Calculate totalRPL locked
+    const totalRPLStaked = await client.readContract({
+      address: RocketNodeStakingAddress,
+      abi: RocketNodeStakingAbi,
+      functionName: "getTotalRPLStake",
+      blockNumber: event.block.number,
+    });
+
+    totalRPLLocked += totalRPLStaked;
+
+    const [rocketDAONodeTrustedActionsRPLBalance, rocketAuctionManagerRPLbalance] = await client.multicall({
+      contracts: [
+        {
+          ...rocketVaultContract,
+          functionName: "balanceOfToken",
+          args: ["rocketDAONodeTrustedActions", rocketVaultContract.address],
+        },
+        {
+          ...rocketVaultContract,
+          functionName: "balanceOfToken",
+          args: ["rocketAuctionManager", rocketVaultContract.address],
+        },
+      ],
+      blockNumber: event.block.number,
+    });
+
+    if (rocketDAONodeTrustedActionsRPLBalance.status != "success") {
+      throw new Error("rocketDAONodeTrustedActionsRPLBalance failed");
+    }
+
+    totalRPLLocked += rocketDAONodeTrustedActionsRPLBalance.result;
+
+    if (rocketAuctionManagerRPLbalance.status != "success") {
+      throw new Error("rocketAuctionManagerRPLbalance failed");
+    }
+
+    totalRPLLocked += rocketAuctionManagerRPLbalance.result;
+
+    await context.db.RocketPoolTVL.create({
       id: event.log.id,
       data: {
-        value,
+        ethLocked: totalEthLocked,
+        rethLocked: totalRethLocked,
+        rplLocked: totalRPLLocked,
         date: event.block.timestamp,
       },
     });
