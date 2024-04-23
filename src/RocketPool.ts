@@ -40,10 +40,10 @@ ponder.on(
 
       if (
         activeMinipools[0] +
-          activeMinipools[1] +
-          activeMinipools[2] +
-          activeMinipools[3] +
-          activeMinipools[4] <
+        activeMinipools[1] +
+        activeMinipools[2] +
+        activeMinipools[3] +
+        activeMinipools[4] <
         limit
       ) {
         break;
@@ -53,10 +53,11 @@ ponder.on(
     }
 
     const ethLockedInMinipools =
-      initialisedMinipools * 16n +
-      prelaunchMinipools * 32n +
-      stakingMinipools * 32n +
-      (withdrawableMinipools * 32n) * BigInt(1e18);
+      (initialisedMinipools * 16n +
+        prelaunchMinipools * 32n +
+        stakingMinipools * 32n +
+        withdrawableMinipools * 32n
+      ) * BigInt(1e18);
 
     totalEthLocked += ethLockedInMinipools;
 
