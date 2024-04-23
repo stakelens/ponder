@@ -16,12 +16,16 @@ import {
 const startBlock = 14353601;
 
 export default createConfig({
+  database: {
+    kind: "postgres",
+    connectionString: process.env.DATABASE_URL,
+  },
   networks: {
     mainnet: {
       chainId: 1,
-      maxRequestsPerSecond: 25,
+      maxRequestsPerSecond: Number(process.env.MAX_REQUESTS_PER_SECOND),
       transport: http(
-        "https://eth-mainnet.rpc.grove.city/v1/60ff569c7031010034074b21"
+        process.env.RPC_URL
       ),
     },
   },
