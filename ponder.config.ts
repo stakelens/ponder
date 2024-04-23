@@ -13,7 +13,7 @@ import {
   RocketMinipoolManagerAddress,
 } from "./abis/RocketPool/RocketMinipoolManager";
 
-const startBlock = 14353601;
+const startBlock = 19520243;
 
 export default createConfig({
   database: {
