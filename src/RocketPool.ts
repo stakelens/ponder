@@ -50,7 +50,6 @@ ponder.on(
       }
 
       offset += limit;
-      console.log("offset: ", offset);
     }
 
     const ethLockedInMinipools =
