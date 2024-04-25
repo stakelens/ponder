@@ -5,11 +5,11 @@ export const RocketVaultAbi = [
       {
         internalType: "contract RocketStorageInterface",
         name: "_rocketStorageAddress",
-        type: "address",
-      },
+        type: "address"
+      }
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
+    type: "constructor"
   },
   {
     anonymous: false,
@@ -18,23 +18,23 @@ export const RocketVaultAbi = [
         indexed: true,
         internalType: "string",
         name: "by",
-        type: "string",
+        type: "string"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "amount",
-        type: "uint256",
+        type: "uint256"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "time",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "EtherDeposited",
-    type: "event",
+    type: "event"
   },
   {
     anonymous: false,
@@ -43,23 +43,23 @@ export const RocketVaultAbi = [
         indexed: true,
         internalType: "string",
         name: "by",
-        type: "string",
+        type: "string"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "amount",
-        type: "uint256",
+        type: "uint256"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "time",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "EtherWithdrawn",
-    type: "event",
+    type: "event"
   },
   {
     anonymous: false,
@@ -68,29 +68,29 @@ export const RocketVaultAbi = [
         indexed: true,
         internalType: "bytes32",
         name: "by",
-        type: "bytes32",
+        type: "bytes32"
       },
       {
         indexed: true,
         internalType: "address",
         name: "tokenAddress",
-        type: "address",
+        type: "address"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "amount",
-        type: "uint256",
+        type: "uint256"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "time",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "TokenBurned",
-    type: "event",
+    type: "event"
   },
   {
     anonymous: false,
@@ -99,29 +99,29 @@ export const RocketVaultAbi = [
         indexed: true,
         internalType: "bytes32",
         name: "by",
-        type: "bytes32",
+        type: "bytes32"
       },
       {
         indexed: true,
         internalType: "address",
         name: "tokenAddress",
-        type: "address",
+        type: "address"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "amount",
-        type: "uint256",
+        type: "uint256"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "time",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "TokenDeposited",
-    type: "event",
+    type: "event"
   },
   {
     anonymous: false,
@@ -130,35 +130,35 @@ export const RocketVaultAbi = [
         indexed: true,
         internalType: "bytes32",
         name: "by",
-        type: "bytes32",
+        type: "bytes32"
       },
       {
         indexed: true,
         internalType: "bytes32",
         name: "to",
-        type: "bytes32",
+        type: "bytes32"
       },
       {
         indexed: true,
         internalType: "address",
         name: "tokenAddress",
-        type: "address",
+        type: "address"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "amount",
-        type: "uint256",
+        type: "uint256"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "time",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "TokenTransfer",
-    type: "event",
+    type: "event"
   },
   {
     anonymous: false,
@@ -167,143 +167,143 @@ export const RocketVaultAbi = [
         indexed: true,
         internalType: "bytes32",
         name: "by",
-        type: "bytes32",
+        type: "bytes32"
       },
       {
         indexed: true,
         internalType: "address",
         name: "tokenAddress",
-        type: "address",
+        type: "address"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "amount",
-        type: "uint256",
+        type: "uint256"
       },
       {
         indexed: false,
         internalType: "uint256",
         name: "time",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "TokenWithdrawn",
-    type: "event",
+    type: "event"
   },
   {
     inputs: [
       {
         internalType: "string",
         name: "_networkContractName",
-        type: "string",
-      },
+        type: "string"
+      }
     ],
     name: "balanceOf",
     outputs: [
       {
         internalType: "uint256",
         name: "",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [
       {
         internalType: "string",
         name: "_networkContractName",
-        type: "string",
+        type: "string"
       },
       {
         internalType: "contract IERC20",
         name: "_tokenAddress",
-        type: "address",
-      },
+        type: "address"
+      }
     ],
     name: "balanceOfToken",
     outputs: [
       {
         internalType: "uint256",
         name: "",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [
       {
         internalType: "contract ERC20Burnable",
         name: "_tokenAddress",
-        type: "address",
+        type: "address"
       },
       {
         internalType: "uint256",
         name: "_amount",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "burnToken",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [],
     name: "depositEther",
     outputs: [],
     stateMutability: "payable",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [
       {
         internalType: "string",
         name: "_networkContractName",
-        type: "string",
+        type: "string"
       },
       {
         internalType: "contract IERC20",
         name: "_tokenContract",
-        type: "address",
+        type: "address"
       },
       {
         internalType: "uint256",
         name: "_amount",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "depositToken",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [
       {
         internalType: "string",
         name: "_networkContractName",
-        type: "string",
+        type: "string"
       },
       {
         internalType: "contract IERC20",
         name: "_tokenAddress",
-        type: "address",
+        type: "address"
       },
       {
         internalType: "uint256",
         name: "_amount",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "transferToken",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [],
@@ -312,46 +312,46 @@ export const RocketVaultAbi = [
       {
         internalType: "uint8",
         name: "",
-        type: "uint8",
-      },
+        type: "uint8"
+      }
     ],
     stateMutability: "view",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [
       {
         internalType: "uint256",
         name: "_amount",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "withdrawEther",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+    type: "function"
   },
   {
     inputs: [
       {
         internalType: "address",
         name: "_withdrawalAddress",
-        type: "address",
+        type: "address"
       },
       {
         internalType: "contract IERC20",
         name: "_tokenAddress",
-        type: "address",
+        type: "address"
       },
       {
         internalType: "uint256",
         name: "_amount",
-        type: "uint256",
-      },
+        type: "uint256"
+      }
     ],
     name: "withdrawToken",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
-  },
+    type: "function"
+  }
 ] as const;
